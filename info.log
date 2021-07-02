@@ -1,0 +1,289 @@
+2021-07-02 12-52-52 wgcpy >>> wgcpy log save path: D:\DZPackage\wgcpy\info.log! 
+2021-07-02 12-53-01 wgcpy >>> start detect dataframe >>>>>>>>>
+2021-07-02 12-53-01 wgcpy >>> [detect dataframe] done in 0.11 s
+2021-07-02 12-53-01 wgcpy >>> start calculate IV: duration.in.month
+2021-07-02 12-53-01 wgcpy >>> calculate iv complete! bins cnt:11, IV value: 0.3548
+2021-07-02 12-53-01 wgcpy >>> start calculate IV: credit.amount
+2021-07-02 12-53-01 wgcpy >>> calculate iv complete! bins cnt:11, IV value: 0.3694
+2021-07-02 12-53-01 wgcpy >>> start calculate IV: installment.rate.in.percentage.of.disposable.income
+2021-07-02 12-53-01 wgcpy >>> calculate iv complete! bins cnt:5, IV value: 0.0263
+2021-07-02 12-53-01 wgcpy >>> start calculate IV: present.residence.since
+2021-07-02 12-53-01 wgcpy >>> calculate iv complete! bins cnt:5, IV value: 0.0036
+2021-07-02 12-53-01 wgcpy >>> start calculate IV: age.in.years
+2021-07-02 12-53-01 wgcpy >>> calculate iv complete! bins cnt:11, IV value: 0.1981
+2021-07-02 12-53-01 wgcpy >>> start calculate IV: number.of.existing.credits.at.this.bank
+2021-07-02 12-53-02 wgcpy >>> calculate iv complete! bins cnt:4, IV value: 0.0114
+2021-07-02 12-53-02 wgcpy >>> start calculate IV: number.of.people.being.liable.to.provide.maintenance.for
+2021-07-02 12-53-02 wgcpy >>> calculate iv complete! bins cnt:3, IV value: 0.0
+2021-07-02 12-53-02 wgcpy >>> start calculate IV: credit.history
+2021-07-02 12-53-02 wgcpy >>> calculate iv complete! bins cnt:5, IV value: 0.2932
+2021-07-02 12-53-02 wgcpy >>> start calculate IV: housing
+2021-07-02 12-53-02 wgcpy >>> calculate iv complete! bins cnt:3, IV value: 0.0833
+2021-07-02 12-53-02 wgcpy >>> start calculate IV: property
+2021-07-02 12-53-02 wgcpy >>> calculate iv complete! bins cnt:4, IV value: 0.1126
+2021-07-02 12-53-02 wgcpy >>> start calculate IV: other.installment.plans
+2021-07-02 12-53-02 wgcpy >>> calculate iv complete! bins cnt:3, IV value: 0.0576
+2021-07-02 12-53-02 wgcpy >>> start calculate IV: foreign.worker
+2021-07-02 12-53-02 wgcpy >>> calculate iv complete! bins cnt:2, IV value: 0.0439
+2021-07-02 12-53-02 wgcpy >>> start calculate IV: savings.account.and.bonds
+2021-07-02 12-53-02 wgcpy >>> calculate iv complete! bins cnt:5, IV value: 0.196
+2021-07-02 12-53-02 wgcpy >>> start calculate IV: purpose
+2021-07-02 12-53-02 wgcpy >>> calculate iv complete! bins cnt:10, IV value: 0.1678
+2021-07-02 12-53-02 wgcpy >>> start calculate IV: personal.status.and.sex
+2021-07-02 12-53-02 wgcpy >>> calculate iv complete! bins cnt:4, IV value: 0.0088
+2021-07-02 12-53-02 wgcpy >>> start calculate IV: other.debtors.or.guarantors
+2021-07-02 12-53-02 wgcpy >>> calculate iv complete! bins cnt:3, IV value: 0.032
+2021-07-02 12-53-02 wgcpy >>> start calculate IV: telephone
+2021-07-02 12-53-02 wgcpy >>> calculate iv complete! bins cnt:2, IV value: 0.0064
+2021-07-02 12-53-02 wgcpy >>> start calculate IV: present.employment.since
+2021-07-02 12-53-02 wgcpy >>> calculate iv complete! bins cnt:5, IV value: 0.0864
+2021-07-02 12-53-02 wgcpy >>> start calculate IV: job
+2021-07-02 12-53-02 wgcpy >>> calculate iv complete! bins cnt:4, IV value: 0.0088
+2021-07-02 12-53-02 wgcpy >>> start calculate IV: status.of.existing.checking.account
+2021-07-02 12-53-03 wgcpy >>> calculate iv complete! bins cnt:4, IV value: 0.666
+2021-07-02 12-53-03 wgcpy >>> [cal iv] done in 1.98 s
+2021-07-02 12-53-03 wgcpy >>> start calculate psi >>>>>
+2021-07-02 12-53-03 wgcpy >>> calclate psi complete, psi value: 0.006869865786904775
+2021-07-02 12-53-03 wgcpy >>> [cal psi] done in 0.06 s
+2021-07-02 12-53-03 wgcpy >>> 0 features with greater than 0.95 missing values.
+
+2021-07-02 12-53-03 wgcpy >>> 0 features with a single unique value.
+
+2021-07-02 12-53-03 wgcpy >>> 1 features with a correlation magnitude greater than 0.60.
+
+2021-07-02 12-53-03 wgcpy >>> detect the total feats, drop feats: 1
+2021-07-02 12-53-03 wgcpy >>> detect the total feats, userful feats: 19
+2021-07-02 12-53-03 wgcpy >>> start cv calulate, Fold: 0
+2021-07-02 12-53-03 wgcpy >>> train shape: (800, 19), train badRate: 0.3, valid shape: (200, 19), valid badRate: 0.3
+2021-07-02 12-53-04 wgcpy >>> start cv calulate, Fold: 1
+2021-07-02 12-53-04 wgcpy >>> train shape: (800, 19), train badRate: 0.3, valid shape: (200, 19), valid badRate: 0.3
+2021-07-02 12-53-04 wgcpy >>> start cv calulate, Fold: 2
+2021-07-02 12-53-04 wgcpy >>> train shape: (800, 19), train badRate: 0.3, valid shape: (200, 19), valid badRate: 0.3
+2021-07-02 12-53-04 wgcpy >>> start cv calulate, Fold: 3
+2021-07-02 12-53-04 wgcpy >>> train shape: (800, 19), train badRate: 0.3, valid shape: (200, 19), valid badRate: 0.3
+2021-07-02 12-53-04 wgcpy >>> start cv calulate, Fold: 4
+2021-07-02 12-53-04 wgcpy >>> train shape: (800, 19), train badRate: 0.3, valid shape: (200, 19), valid badRate: 0.3
+2021-07-02 12-53-05 wgcpy >>> cross validation complete!
+2021-07-02 12-53-05 wgcpy >>> After filtering cumsum importance above 95.00%, The number of seleted features is: 12 !
+2021-07-02 12-53-05 wgcpy >>> step:0, feature cnt:1
+2021-07-02 12-53-05 wgcpy >>> add the step features, val_auc: 0.7066190476190476, val_std: 0.027922527052664896
+2021-07-02 12-53-05 wgcpy >>> step:1, feature cnt:2
+2021-07-02 12-53-05 wgcpy >>> add the step features, val_auc: 0.7499761904761904, val_std: 0.02764841931653505
+2021-07-02 12-53-05 wgcpy >>> step:2, feature cnt:3
+2021-07-02 12-53-06 wgcpy >>> delete the step features: ['age.in.years'], auc diff: -0.005523809523809375
+2021-07-02 12-53-06 wgcpy >>> step:3, feature cnt:3
+2021-07-02 12-53-06 wgcpy >>> add the step features, val_auc: 0.7574761904761904, val_std: 0.03196528552129717
+2021-07-02 12-53-06 wgcpy >>> step:4, feature cnt:4
+2021-07-02 12-53-06 wgcpy >>> add the step features, val_auc: 0.7591666666666667, val_std: 0.032495560485198034
+2021-07-02 12-53-06 wgcpy >>> step:5, feature cnt:5
+2021-07-02 12-53-07 wgcpy >>> add the step features, val_auc: 0.7651785714285714, val_std: 0.03659612493890871
+2021-07-02 12-53-07 wgcpy >>> step:6, feature cnt:6
+2021-07-02 12-53-07 wgcpy >>> add the step features, val_auc: 0.7746547619047619, val_std: 0.03659612493890871
+2021-07-02 12-53-07 wgcpy >>> step:7, feature cnt:7
+2021-07-02 12-53-07 wgcpy >>> delete the step features: ['installment.rate.in.percentage.of.disposable.income'], auc diff: -0.002142857142857113
+2021-07-02 12-53-07 wgcpy >>> step:8, feature cnt:7
+2021-07-02 12-53-08 wgcpy >>> add the step features, val_auc: 0.7867142857142857, val_std: 0.03659612493890871
+2021-07-02 12-53-08 wgcpy >>> step:9, feature cnt:8
+2021-07-02 12-53-08 wgcpy >>> delete the step features: ['present.employment.since'], auc diff: -0.0006666666666665932
+2021-07-02 12-53-08 wgcpy >>> step:10, feature cnt:8
+2021-07-02 12-53-09 wgcpy >>> delete the step features: ['housing'], auc diff: 0.0006666666666665932
+2021-07-02 12-53-09 wgcpy >>> step:11, feature cnt:8
+2021-07-02 12-53-09 wgcpy >>> delete the step features: ['present.residence.since'], auc diff: -0.003702380952380846
+2021-07-02 12-53-10 wgcpy >>> [cal cv score] done in 7.12 s
+2021-07-02 12-53-10 wgcpy >>> numeric features cnt: 7, 	category features cnt: 13
+2021-07-02 12-53-10 wgcpy >>> train data shape: (800, 20), 	target data shape: (800,)
+2021-07-02 12-53-11 wgcpy >>> auc:0.7891666666666667, ks:0.46904761904761905
+2021-07-02 12-53-15 wgcpy >>> [PMML model build] done in 5.15 s
+2021-07-02 13-04-41 wgcpy >>> wgcpy log save path: D:\DZPackage\wgcpy\info.log! 
+2021-07-02 13-04-49 wgcpy >>> start detect dataframe >>>>>>>>>
+2021-07-02 13-04-49 wgcpy >>> [detect dataframe] done in 0.07 s
+2021-07-02 13-04-49 wgcpy >>> start calculate IV: duration.in.month
+2021-07-02 13-04-49 wgcpy >>> calculate iv complete! bins cnt:11, IV value: 0.3548
+2021-07-02 13-04-49 wgcpy >>> start calculate IV: credit.amount
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:11, IV value: 0.3694
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: installment.rate.in.percentage.of.disposable.income
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:5, IV value: 0.0263
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: present.residence.since
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:5, IV value: 0.0036
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: age.in.years
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:11, IV value: 0.1981
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: number.of.existing.credits.at.this.bank
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:4, IV value: 0.0114
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: number.of.people.being.liable.to.provide.maintenance.for
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:3, IV value: 0.0
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: other.debtors.or.guarantors
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:3, IV value: 0.032
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: present.employment.since
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:5, IV value: 0.0864
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: personal.status.and.sex
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:4, IV value: 0.0088
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: telephone
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:2, IV value: 0.0064
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: savings.account.and.bonds
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:5, IV value: 0.196
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: property
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:4, IV value: 0.1126
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: job
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:4, IV value: 0.0088
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: purpose
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:10, IV value: 0.1678
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: other.installment.plans
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:3, IV value: 0.0576
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: housing
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:3, IV value: 0.0833
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: foreign.worker
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:2, IV value: 0.0439
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: credit.history
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:5, IV value: 0.2932
+2021-07-02 13-04-50 wgcpy >>> start calculate IV: status.of.existing.checking.account
+2021-07-02 13-04-50 wgcpy >>> calculate iv complete! bins cnt:4, IV value: 0.666
+2021-07-02 13-04-51 wgcpy >>> [cal iv] done in 1.15 s
+2021-07-02 13-04-51 wgcpy >>> start calculate psi >>>>>
+2021-07-02 13-04-51 wgcpy >>> calclate psi complete, psi value: 0.006869865786904775
+2021-07-02 13-04-51 wgcpy >>> [cal psi] done in 0.04 s
+2021-07-02 13-04-51 wgcpy >>> 0 features with greater than 0.95 missing values.
+
+2021-07-02 13-04-51 wgcpy >>> 0 features with a single unique value.
+
+2021-07-02 13-04-51 wgcpy >>> 1 features with a correlation magnitude greater than 0.60.
+
+2021-07-02 13-04-51 wgcpy >>> detect the total feats, drop feats: 1
+2021-07-02 13-04-51 wgcpy >>> detect the total feats, userful feats: 19
+2021-07-02 13-04-51 wgcpy >>> start cv calulate, Fold: 0
+2021-07-02 13-04-51 wgcpy >>> train shape: (800, 19), train badRate: 0.3, valid shape: (200, 19), valid badRate: 0.3
+2021-07-02 13-04-51 wgcpy >>> start cv calulate, Fold: 1
+2021-07-02 13-04-51 wgcpy >>> train shape: (800, 19), train badRate: 0.3, valid shape: (200, 19), valid badRate: 0.3
+2021-07-02 13-04-51 wgcpy >>> start cv calulate, Fold: 2
+2021-07-02 13-04-51 wgcpy >>> train shape: (800, 19), train badRate: 0.3, valid shape: (200, 19), valid badRate: 0.3
+2021-07-02 13-04-51 wgcpy >>> start cv calulate, Fold: 3
+2021-07-02 13-04-51 wgcpy >>> train shape: (800, 19), train badRate: 0.3, valid shape: (200, 19), valid badRate: 0.3
+2021-07-02 13-04-52 wgcpy >>> start cv calulate, Fold: 4
+2021-07-02 13-04-52 wgcpy >>> train shape: (800, 19), train badRate: 0.3, valid shape: (200, 19), valid badRate: 0.3
+2021-07-02 13-04-52 wgcpy >>> cross validation complete!
+2021-07-02 13-04-52 wgcpy >>> After filtering cumsum importance above 95.00%, The number of seleted features is: 12 !
+2021-07-02 13-04-52 wgcpy >>> step:0, feature cnt:1
+2021-07-02 13-04-52 wgcpy >>> add the step features, val_auc: 0.7066190476190476, val_std: 0.027922527052664896
+2021-07-02 13-04-52 wgcpy >>> step:1, feature cnt:2
+2021-07-02 13-04-52 wgcpy >>> add the step features, val_auc: 0.7499761904761904, val_std: 0.02764841931653505
+2021-07-02 13-04-52 wgcpy >>> step:2, feature cnt:3
+2021-07-02 13-04-52 wgcpy >>> delete the step features: ['age.in.years'], auc diff: -0.005523809523809375
+2021-07-02 13-04-52 wgcpy >>> step:3, feature cnt:3
+2021-07-02 13-04-52 wgcpy >>> add the step features, val_auc: 0.7574761904761904, val_std: 0.03196528552129717
+2021-07-02 13-04-52 wgcpy >>> step:4, feature cnt:4
+2021-07-02 13-04-53 wgcpy >>> add the step features, val_auc: 0.7591666666666667, val_std: 0.032495560485198034
+2021-07-02 13-04-53 wgcpy >>> step:5, feature cnt:5
+2021-07-02 13-04-53 wgcpy >>> add the step features, val_auc: 0.7651785714285714, val_std: 0.03659612493890871
+2021-07-02 13-04-53 wgcpy >>> step:6, feature cnt:6
+2021-07-02 13-04-53 wgcpy >>> add the step features, val_auc: 0.7746547619047619, val_std: 0.03659612493890871
+2021-07-02 13-04-53 wgcpy >>> step:7, feature cnt:7
+2021-07-02 13-04-54 wgcpy >>> delete the step features: ['installment.rate.in.percentage.of.disposable.income'], auc diff: -0.002142857142857113
+2021-07-02 13-04-54 wgcpy >>> step:8, feature cnt:7
+2021-07-02 13-04-54 wgcpy >>> add the step features, val_auc: 0.7867142857142857, val_std: 0.03659612493890871
+2021-07-02 13-04-54 wgcpy >>> step:9, feature cnt:8
+2021-07-02 13-04-54 wgcpy >>> delete the step features: ['present.employment.since'], auc diff: -0.0006666666666665932
+2021-07-02 13-04-54 wgcpy >>> step:10, feature cnt:8
+2021-07-02 13-04-55 wgcpy >>> delete the step features: ['housing'], auc diff: 0.0006666666666665932
+2021-07-02 13-04-55 wgcpy >>> step:11, feature cnt:8
+2021-07-02 13-04-55 wgcpy >>> delete the step features: ['present.residence.since'], auc diff: -0.003702380952380846
+2021-07-02 13-04-56 wgcpy >>> [cal cv score] done in 4.98 s
+2021-07-02 13-04-56 wgcpy >>> numeric features cnt: 7, 	category features cnt: 13
+2021-07-02 13-04-56 wgcpy >>> train data shape: (800, 20), 	target data shape: (800,)
+2021-07-02 13-04-56 wgcpy >>> auc:0.7389641988182134, ks:0.4464140887498552
+2021-07-02 13-05-00 wgcpy >>> [PMML model build] done in 4.23 s
+2021-07-02 14-30-08 wgcpy >>> wgcpy log save path: D:\DZPackage\wgcpy\info.log! 
+2021-07-02 14-30-15 wgcpy >>> start detect dataframe >>>>>>>>>
+2021-07-02 14-30-15 wgcpy >>> [detect dataframe] done in 0.06 s
+2021-07-02 14-30-15 wgcpy >>> start calculate IV: duration.in.month
+2021-07-02 14-30-15 wgcpy >>> calculate iv complete! bins cnt:11, IV value: 0.3548
+2021-07-02 14-30-15 wgcpy >>> start calculate IV: credit.amount
+2021-07-02 14-30-15 wgcpy >>> calculate iv complete! bins cnt:11, IV value: 0.3694
+2021-07-02 14-30-15 wgcpy >>> start calculate IV: installment.rate.in.percentage.of.disposable.income
+2021-07-02 14-30-15 wgcpy >>> calculate iv complete! bins cnt:5, IV value: 0.0263
+2021-07-02 14-30-15 wgcpy >>> start calculate IV: present.residence.since
+2021-07-02 14-30-15 wgcpy >>> calculate iv complete! bins cnt:5, IV value: 0.0036
+2021-07-02 14-30-15 wgcpy >>> start calculate IV: age.in.years
+2021-07-02 14-30-15 wgcpy >>> calculate iv complete! bins cnt:11, IV value: 0.1981
+2021-07-02 14-30-15 wgcpy >>> start calculate IV: number.of.existing.credits.at.this.bank
+2021-07-02 14-30-15 wgcpy >>> calculate iv complete! bins cnt:4, IV value: 0.0114
+2021-07-02 14-30-15 wgcpy >>> start calculate IV: number.of.people.being.liable.to.provide.maintenance.for
+2021-07-02 14-30-15 wgcpy >>> calculate iv complete! bins cnt:3, IV value: 0.0
+2021-07-02 14-30-15 wgcpy >>> start calculate IV: savings.account.and.bonds
+2021-07-02 14-30-15 wgcpy >>> calculate iv complete! bins cnt:5, IV value: 0.196
+2021-07-02 14-30-15 wgcpy >>> start calculate IV: property
+2021-07-02 14-30-15 wgcpy >>> calculate iv complete! bins cnt:4, IV value: 0.1126
+2021-07-02 14-30-15 wgcpy >>> start calculate IV: other.installment.plans
+2021-07-02 14-30-16 wgcpy >>> calculate iv complete! bins cnt:3, IV value: 0.0576
+2021-07-02 14-30-16 wgcpy >>> start calculate IV: telephone
+2021-07-02 14-30-16 wgcpy >>> calculate iv complete! bins cnt:2, IV value: 0.0064
+2021-07-02 14-30-16 wgcpy >>> start calculate IV: foreign.worker
+2021-07-02 14-30-16 wgcpy >>> calculate iv complete! bins cnt:2, IV value: 0.0439
+2021-07-02 14-30-16 wgcpy >>> start calculate IV: housing
+2021-07-02 14-30-16 wgcpy >>> calculate iv complete! bins cnt:3, IV value: 0.0833
+2021-07-02 14-30-16 wgcpy >>> start calculate IV: status.of.existing.checking.account
+2021-07-02 14-30-16 wgcpy >>> calculate iv complete! bins cnt:4, IV value: 0.666
+2021-07-02 14-30-16 wgcpy >>> start calculate IV: credit.history
+2021-07-02 14-30-16 wgcpy >>> calculate iv complete! bins cnt:5, IV value: 0.2932
+2021-07-02 14-30-16 wgcpy >>> start calculate IV: present.employment.since
+2021-07-02 14-30-16 wgcpy >>> calculate iv complete! bins cnt:5, IV value: 0.0864
+2021-07-02 14-30-16 wgcpy >>> start calculate IV: job
+2021-07-02 14-30-16 wgcpy >>> calculate iv complete! bins cnt:4, IV value: 0.0088
+2021-07-02 14-30-16 wgcpy >>> start calculate IV: personal.status.and.sex
+2021-07-02 14-30-16 wgcpy >>> calculate iv complete! bins cnt:4, IV value: 0.0088
+2021-07-02 14-30-16 wgcpy >>> start calculate IV: purpose
+2021-07-02 14-30-16 wgcpy >>> calculate iv complete! bins cnt:10, IV value: 0.1678
+2021-07-02 14-30-16 wgcpy >>> start calculate IV: other.debtors.or.guarantors
+2021-07-02 14-30-16 wgcpy >>> calculate iv complete! bins cnt:3, IV value: 0.032
+2021-07-02 14-30-16 wgcpy >>> [cal iv] done in 1.06 s
+2021-07-02 14-30-16 wgcpy >>> start calculate psi >>>>>
+2021-07-02 14-30-16 wgcpy >>> calclate psi complete, psi value: 0.006869865786904775
+2021-07-02 14-30-16 wgcpy >>> [cal psi] done in 0.03 s
+2021-07-02 14-30-16 wgcpy >>> 0 features with greater than 0.95 missing values.
+
+2021-07-02 14-30-16 wgcpy >>> 0 features with a single unique value.
+
+2021-07-02 14-30-16 wgcpy >>> 1 features with a correlation magnitude greater than 0.60.
+
+2021-07-02 14-30-16 wgcpy >>> detect the total feats, drop feats: 1
+2021-07-02 14-30-16 wgcpy >>> detect the total feats, userful feats: 19
+2021-07-02 14-30-16 wgcpy >>> start cv calulate, Fold: 0
+2021-07-02 14-30-16 wgcpy >>> train shape: (800, 19), train badRate: 0.3, valid shape: (200, 19), valid badRate: 0.3
+2021-07-02 14-30-17 wgcpy >>> start cv calulate, Fold: 1
+2021-07-02 14-30-17 wgcpy >>> train shape: (800, 19), train badRate: 0.3, valid shape: (200, 19), valid badRate: 0.3
+2021-07-02 14-30-17 wgcpy >>> start cv calulate, Fold: 2
+2021-07-02 14-30-17 wgcpy >>> train shape: (800, 19), train badRate: 0.3, valid shape: (200, 19), valid badRate: 0.3
+2021-07-02 14-30-17 wgcpy >>> start cv calulate, Fold: 3
+2021-07-02 14-30-17 wgcpy >>> train shape: (800, 19), train badRate: 0.3, valid shape: (200, 19), valid badRate: 0.3
+2021-07-02 14-30-17 wgcpy >>> start cv calulate, Fold: 4
+2021-07-02 14-30-17 wgcpy >>> train shape: (800, 19), train badRate: 0.3, valid shape: (200, 19), valid badRate: 0.3
+2021-07-02 14-30-17 wgcpy >>> cross validation complete!
+2021-07-02 14-30-17 wgcpy >>> After filtering cumsum importance above 95.00%, The number of seleted features is: 12 !
+2021-07-02 14-30-17 wgcpy >>> step:0, feature cnt:1
+2021-07-02 14-30-18 wgcpy >>> add the step features, val_auc: 0.7066190476190476, val_std: 0.027922527052664896
+2021-07-02 14-30-18 wgcpy >>> step:1, feature cnt:2
+2021-07-02 14-30-18 wgcpy >>> add the step features, val_auc: 0.7499761904761904, val_std: 0.02764841931653505
+2021-07-02 14-30-18 wgcpy >>> step:2, feature cnt:3
+2021-07-02 14-30-18 wgcpy >>> delete the step features: ['age.in.years'], auc diff: -0.005523809523809375
+2021-07-02 14-30-18 wgcpy >>> step:3, feature cnt:3
+2021-07-02 14-30-18 wgcpy >>> add the step features, val_auc: 0.7574761904761904, val_std: 0.03196528552129717
+2021-07-02 14-30-18 wgcpy >>> step:4, feature cnt:4
+2021-07-02 14-30-18 wgcpy >>> add the step features, val_auc: 0.7591666666666667, val_std: 0.032495560485198034
+2021-07-02 14-30-18 wgcpy >>> step:5, feature cnt:5
+2021-07-02 14-30-19 wgcpy >>> add the step features, val_auc: 0.7651785714285714, val_std: 0.03659612493890871
+2021-07-02 14-30-19 wgcpy >>> step:6, feature cnt:6
+2021-07-02 14-30-19 wgcpy >>> add the step features, val_auc: 0.7746547619047619, val_std: 0.03659612493890871
+2021-07-02 14-30-19 wgcpy >>> step:7, feature cnt:7
+2021-07-02 14-30-19 wgcpy >>> delete the step features: ['installment.rate.in.percentage.of.disposable.income'], auc diff: -0.002142857142857113
+2021-07-02 14-30-19 wgcpy >>> step:8, feature cnt:7
+2021-07-02 14-30-19 wgcpy >>> add the step features, val_auc: 0.7867142857142857, val_std: 0.03659612493890871
+2021-07-02 14-30-19 wgcpy >>> step:9, feature cnt:8
+2021-07-02 14-30-20 wgcpy >>> delete the step features: ['present.employment.since'], auc diff: -0.0006666666666665932
+2021-07-02 14-30-20 wgcpy >>> step:10, feature cnt:8
+2021-07-02 14-30-20 wgcpy >>> delete the step features: ['housing'], auc diff: 0.0006666666666665932
+2021-07-02 14-30-20 wgcpy >>> step:11, feature cnt:8
+2021-07-02 14-30-20 wgcpy >>> delete the step features: ['present.residence.since'], auc diff: -0.003702380952380846
+2021-07-02 14-30-21 wgcpy >>> [cal cv score] done in 4.30 s
+2021-07-02 14-30-21 wgcpy >>> numeric features cnt: 7, 	category features cnt: 13
+2021-07-02 14-30-21 wgcpy >>> train data shape: (800, 20), 	target data shape: (800,)
+2021-07-02 14-30-21 wgcpy >>> auc:0.7286485063824187, ks:0.3388603763653112
+2021-07-02 14-30-24 wgcpy >>> [PMML model build] done in 3.84 s
+
