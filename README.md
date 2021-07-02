@@ -25,7 +25,7 @@ GitHub安装
 pip install --upgrade git+https://github.com/whyjust/wgcpy
 ```
 
-### Usage
+### Structure
 wgcpy package tree structure:
 ```text
 WGCPY
@@ -86,7 +86,7 @@ WGCPY
             ext_fn.py
             __init__.py
 ```
-### Demo
+### Usage
 ##### 1 main.py运行
 ```bash
 python main.py
