@@ -42,26 +42,26 @@ WGCPY
     │  info.log						日志信息
     │  __init__.py
     │
-    ├─bins							分箱模块
+    ├─bins						分箱模块
     │      chi_merge.py
     │      cut_bins.py
     │      __init__.py
     │
-    ├─data							Demo数据
+    ├─data						Demo数据
     │      germancredit.csv
     │
-    ├─featureSelector				特征筛选模块
+    ├─featureSelector			                特征筛选模块
     │      cal_iv_psi.py
     │      selector.py
     │      __init__.py
     │
-    ├─model							PMML模型生成及评估模块
+    ├─model						PMML模型生成及评估模块
     │      dz_eval.py
     │      gen_model.py
     │      gen_pmml_model.py
     │      __init__.py
     │
-    ├─pic							结果图片
+    ├─pic						结果图片
     │      credit.amount_woe.png
     │      plot_category_countplot.png
     │      plot_corr.png
@@ -82,7 +82,7 @@ WGCPY
     │      iv_details.csv
     │      psi.csv
     │
-    └─utils							Utils函数
+    └─utils						Utils函数
             ext_fn.py
             __init__.py
 ```
