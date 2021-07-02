@@ -39,7 +39,7 @@ WGCPY
 └─wgcpy
     │  config.py					配置项
     │  main.py						运行主文件
-	│  info.log						日志信息
+    │  info.log						日志信息
     │  __init__.py
     │
     ├─bins							分箱模块
