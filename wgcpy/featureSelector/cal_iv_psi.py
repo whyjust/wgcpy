@@ -363,8 +363,9 @@ def numeric_var_cal_psi(expected_array, actual_array, bins=10, bucket_type='bins
                                        'ac - ex(%)': np.nan,
                                        'ln(ac/ex)': np.nan,
                                        'psi': np.sum(sub_psi_array)}], ignore_index=True)
-        logger.info(
-            f"calclate psi complete, psi value: {psi_value.loc[psi_value.score_range == 'summary', 'psi'].values[0]}")
+        if log:
+            logger.info(
+                f"calclate psi complete, psi value: {psi_value.loc[psi_value.score_range == 'summary', 'psi'].values[0]}")
     else:
         psi_value = np.sum(sub_psi_array)
         if log:
