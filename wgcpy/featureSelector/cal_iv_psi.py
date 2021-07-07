@@ -71,7 +71,6 @@ def numeric_var_cal_iv(data, var, target, max_interval=10, method='DecisionTree'
     if special_attributes is None:
         special_attributes = []
 
-    logger.info(f"start calculate IV: {var}")
     df = data[[var, target]].copy()
     if method == 'chi':
         cp = chi_binning(df, var, target, max_interval, special_attributes)
@@ -97,7 +96,7 @@ def numeric_var_cal_iv(data, var, target, max_interval=10, method='DecisionTree'
     bins = sorted([-np.inf] + special_attributes + cp + [np.inf])
     bins_df, IV, bins = numeric_var_binning(df, var, target, bins, delta)
     IV = np.round(IV, 4)
-    logger.info(f"calculate iv complete! bins cnt:{len(bins)}, IV value: {IV}")
+    logger.info(f"calculate IV: {var}, bins cnt:{len(bins)}, IV value: {IV}")
     return bins_df, IV, bins
 
 
@@ -250,12 +249,11 @@ def category_var_cal_iv(data, var, target, max_interval=10, method='default', sp
     if special_attributes is None:
         special_attributes = []
 
-    logger.info(f"start calculate IV: {var}")
     df = data[[var, target]].copy()
     bins = category_var_bins_merge(df, var, target, max_interval, method, special_attributes, tree_params)
     bins_df, IV, bins = category_var_binning(df, var, target, bins, delta)
     IV = np.round(IV, 4)
-    logger.info(f"calculate iv complete! bins cnt:{len(bins)}, IV value: {IV}")
+    logger.info(f"calculate IV: {var}, bins cnt:{len(bins)}, IV value: {IV}")
     return bins_df, IV, bins
 
 
@@ -312,16 +310,16 @@ def category_var_woe_transform(data, var, bins_df, bins):
     return df['woe'].values
 
 
-def numeric_var_cal_psi(expected_array, actual_array, bins=10, bucket_type='bins', detail=False):
+def numeric_var_cal_psi(expected_array, actual_array, bins=10, bucket_type='bins', detail=False, log=True):
     '''
     :param expected_array: numpy array of original values
     :param actual_array: numpy array of new values, same size as expected
     :param bins: number of percentile ranges to bucket the values into
     :param bucket_type: string, bins or quantiles for choose
     :param detail: bool, whether get the detail table
+    :param log: bool, whether show the log info
     :return psi_value: psi
     '''
-    logger.info("start calculate psi >>>>>")
     expected_array = pd.Series(expected_array).dropna()
     actual_array = pd.Series(actual_array).dropna()
     if isinstance(list(expected_array)[0], str) or isinstance(list(actual_array)[0], str):
@@ -369,5 +367,6 @@ def numeric_var_cal_psi(expected_array, actual_array, bins=10, bucket_type='bins
             f"calclate psi complete, psi value: {psi_value.loc[psi_value.score_range == 'summary', 'psi'].values[0]}")
     else:
         psi_value = np.sum(sub_psi_array)
-        logger.info(f"calculate psi complete, psi value: {psi_value}")
+        if log:
+            logger.info(f"calculate psi complete, psi value: {psi_value}")
     return psi_value
