@@ -203,10 +203,10 @@ class FeatureSelector:
 
         with ExcelWriter(output, engine="xlsxwriter", mode="w") as writer:
             self.record_cv_result.to_excel(excel_writer=writer,
-                                           sheet_name=u"模型CV-Importance评估结果",
+                                           sheet_name=u"模型CV-Result评估结果",
                                            index=True)
             self.record_feats_importance.to_excel(excel_writer=writer,
-                                                  sheet_name=u"模型CV-{}Importance".format('{:.2%}'.format(self.importance_threshold)),
+                                                  sheet_name=u"模型CV-{}Importance结果".format('{:.2%}'.format(self.importance_threshold)),
                                                   index=True)
             self.record_increase_feats.to_excel(excel_writer=writer,
                                                 sheet_name="特征IncreaseCV-Filter评估结果",
