@@ -74,14 +74,6 @@ WGCPY
     │      eda.py
     │      __init__.py
     │
-    ├─result						结果文件
-    │      credit.pkl
-    │      credit.pmml
-    │      des_df.csv
-    │      feats_seletor_result.xlsx
-    │      iv_details.csv
-    │      psi.csv
-    │
     └─utils						Utils函数
             ext_fn.py
             __init__.py
@@ -93,12 +85,12 @@ python main.py
 ```
 ##### 2 数据EDA模块
 ```python
-plot_feature_boxplot(credit_data, numeric_feats, save=True)
+plot_feature_boxplot(credit_data, numeric_feats)
 plot_feature_distribution(credit_data, numeric_feats,
-                          label="flag", sub_col=3, save=True)
+                          label="flag", sub_col=3)
 plot_category_countplot(credit_data, category_feats, label="flag",
-                        sub_col=5, save=True, figsize=(20,12))
-plot_corr(credit_data, numeric_feats+['flag'], mask=True, save=True)
+                        sub_col=5, figsize=(20,12))
+plot_corr(credit_data, numeric_feats+['flag'], mask=True)
 ```
 
 ##### 3 数据探查
