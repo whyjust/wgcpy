@@ -11,14 +11,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-def plot_feature_boxplot(df, feats, figsize=(40,12), sub_col=2, save=False):
+def plot_feature_boxplot(df, feats, figsize=(40,12), sub_col=2):
     '''
     绘制箱型图
     :param df: DataFrame
     :param feats: list or ndarray
     :param figsize: tuple
     :param sub_col: int
-    :param save: bool
     :return:
     '''
     if not isinstance(df, pd.DataFrame):
@@ -29,12 +28,10 @@ def plot_feature_boxplot(df, feats, figsize=(40,12), sub_col=2, save=False):
         ax1 = plt.subplot(sub_col, np.ceil(len(feats)/sub_col), i+1)
         plt.xlim(df[feat].min(), df[feat].max()*1.1)
         sns.boxplot(x=df[feat], ax=ax1)
-    if save:
-        plt.savefig("./pic/plot_feature_boxplot.png", format="png")
     plt.show()
 
 
-def plot_feature_distribution(df, feats, label='flag', sub_col=5, figsize=(35,20), save=False):
+def plot_feature_distribution(df, feats, label='flag', sub_col=5, figsize=(35,20)):
     '''
     绘制特征分布图
     :param df: DataFrame
@@ -42,7 +39,6 @@ def plot_feature_distribution(df, feats, label='flag', sub_col=5, figsize=(35,20
     :param label: string, the label of df
     :param sub_col: int
     :param figsize: tuple
-    :param save: bool
     :return:
     '''
     if not isinstance(df, pd.DataFrame):
@@ -60,19 +56,16 @@ def plot_feature_distribution(df, feats, label='flag', sub_col=5, figsize=(35,20
         locs, labels = plt.xticks()
         plt.tick_params(axis='x', which='major', labelsize=10, pad=-6)
         plt.tick_params(axis='y', which='major', labelsize=10)
-    if save:
-        plt.savefig("./pic/plot_feature_distribution.png", format="png")
     plt.show()
 
 
-def plot_category_countplot(df, feats, label="flag", sub_col=2, save=False, figsize=(12,8)):
+def plot_category_countplot(df, feats, label="flag", sub_col=2, figsize=(12,8)):
     '''
     绘制类别型特征分布
     :param df: DataFrame
     :param feats: list or ndarray
     :param label: string, the label of df
     :param sub_col: int
-    :param save: bool
     :param figsize: tuple
     :return:
     '''
@@ -85,20 +78,16 @@ def plot_category_countplot(df, feats, label="flag", sub_col=2, save=False, figs
     for i,feat in enumerate(feats):
         plt.subplot(sub_col, np.ceil(len(feats)/sub_col), i+1)
         sns.countplot(x=feat, hue=label, data=df, palette='Set3')
-
-    if save:
-        plt.savefig("./pic/plot_category_countplot.png", format="png")
     plt.show()
 
 
-def plot_corr(df, feats, figsize=(12,12), mask=False, save=False):
+def plot_corr(df, feats, figsize=(12,12), mask=False):
     '''
     绘制相关性图
     :param df: pd.DataFrame
     :param feats: list or array
     :param figsize: tuple
     :param mask: bool
-    :param save: bool
     :return:
     '''
     if not isinstance(df, pd.DataFrame):
@@ -111,18 +100,15 @@ def plot_corr(df, feats, figsize=(12,12), mask=False, save=False):
         mask = np.triu(np.ones_like(corr_df,dtype=np.bool))
     sns.heatmap(corr_df, linewidths=0.1, vmax=1.0, mask=mask,
                 square=True, cmap=colormap, linecolor='white', annot=True)
-    if save:
-        plt.savefig("./pic/plot_corr.png", format="png")
     plt.show()
 
-def plot_bin_woe(binx, title=None, display_iv=False, figsize=(8, 6), save=False):
+def plot_bin_woe(binx, title=None, display_iv=False, figsize=(8, 6)):
     '''
     绘制woe
     :param binx: pd.DataFrame, the details of bins
     :param title: str, the title of the figure
     :param display_iv: bool, whether to show iv
     :param figsize: tuple, the size of figsize
-    :param save: bool
     :return: figure
     '''
     y_right_max = np.ceil(binx['pct_1_row'].max() * 10)
@@ -170,7 +156,5 @@ def plot_bin_woe(binx, title=None, display_iv=False, figsize=(8, 6), save=False)
 
     plt.title(title_string, loc='left')
     plt.legend((p2[0], p1[0]), ('bad', 'good'), loc='upper right')
-    if save:
-        plt.savefig(f"./pic/{binx.loc[0, 'variable']}_woe.png", format="png")
     plt.show()
     return fig
