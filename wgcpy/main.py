@@ -20,18 +20,18 @@ pd.options.display.max_rows = 20
 
 def run(credit_data, numeric_feats, category_feats):
     # 数据EDA
-    plot_feature_boxplot(credit_data, numeric_feats, save=True)
+    plot_feature_boxplot(credit_data, numeric_feats)
     plot_feature_distribution(credit_data, numeric_feats,
-                              label="flag", sub_col=3, save=True)
+                              label="flag", sub_col=3)
     plot_category_countplot(credit_data, category_feats, label="flag",
-                            sub_col=5, save=True, figsize=(20,12))
-    plot_corr(credit_data, numeric_feats+['flag'], mask=True, save=True)
+                            sub_col=5,  figsize=(20,12))
+    plot_corr(credit_data, numeric_feats+['flag'], mask=True)
 
     # 数据分布
     with timer('detect dataframe'):
         dec = DectectDF(credit_data)
         df_des = dec.detect(special_value_dict={-999:np.nan},
-                            output=r"./result")
+                            output=os.path.join(base_dir, "result"))
 
     # 计算IV
     with timer("cal iv"):
@@ -43,9 +43,8 @@ def run(credit_data, numeric_feats, category_feats):
                                       method='tree')
         fig = plot_bin_woe(binx=iv_details[iv_details['variable'] == 'credit.amount'],
                            title=None,
-                           display_iv=True,
-                           save=True)
-        iv_details.to_csv(r'./result/iv_details.csv', index=False)
+                           display_iv=True)
+        iv_details.to_csv(os.path.join(base_dir,r'result\iv_details.csv'), index=False)
 
     # 计算psi
     with timer('cal psi'):
@@ -56,7 +55,7 @@ def run(credit_data, numeric_feats, category_feats):
                                      bins=10,
                                      bucket_type='bins',
                                      detail=True)
-        psi_df.to_csv(r'./result/psi.csv')
+        psi_df.to_csv(os.path.join(base_dir, r'result\psi.csv'))
 
     # 特征筛选&细筛
     with timer("cal cv score"):
@@ -87,7 +86,7 @@ def run(credit_data, numeric_feats, category_feats):
                              base_features=numeric_feats+category_feats)
         fs.identify_all(config=config)
         fs.plot_feature_importance()
-        fs.result_save(output=r"./result/feats_seletor_result.xlsx")
+        fs.result_save(output=os.path.join(base_dir, r".\result\feats_seletor_result.xlsx"))
 
     # PMML建模与评估
     with timer("PMML model build"):
@@ -110,8 +109,9 @@ def run(credit_data, numeric_feats, category_feats):
 
 
 if __name__ == "__main__":
-    # 数据读取
-    credit_data = pd.read_csv(r'data/germancredit.csv')
+    # # 数据读取
+    base_dir = os.getcwd()
+    credit_data = pd.read_csv(os.path.join(base_dir, r'data\germancredit.csv'))
     numeric_feats = credit_data.select_dtypes(include=['int64','float64']).columns.tolist()
     category_feats = list(set(credit_data.columns) - set(numeric_feats + ['creditability']))
     credit_data["flag"] = credit_data["creditability"].replace({"good": 0, "bad": 1})
@@ -120,3 +120,4 @@ if __name__ == "__main__":
     run(credit_data=credit_data,
         category_feats=category_feats,
         numeric_feats=numeric_feats)
+
