@@ -92,13 +92,13 @@ plot_category_countplot(credit_data, category_feats, label="flag",
                         sub_col=5, figsize=(20,12))
 plot_corr(credit_data, numeric_feats+['flag'], mask=True)
 ```
-
 ##### 3 数据探查
 ```python
+# 数据分布
 with timer('detect dataframe'):
     dec = DectectDF(credit_data)
     df_des = dec.detect(special_value_dict={-999:np.nan},
-                        output=r"./result")
+                        output=os.path.join(base_dir, "result"))
 ```
 ##### 4 计算IV
 ```python
@@ -112,7 +112,7 @@ with timer("cal iv"):
     fig = plot_bin_woe(binx=iv_details[iv_details['variable'] == 'credit.amount'],
                        title=None,
                        display_iv=True)
-    iv_details.to_csv(r'./result/iv_details.csv', index=False)
+    iv_details.to_csv(os.path.join(base_dir,r'result\iv_details.csv'), index=False)
 ```
 ##### 5 计算PSI
 ```python
@@ -124,7 +124,7 @@ with timer('cal psi'):
                                  bins=10,
                                  bucket_type='bins',
                                  detail=True)
-    psi_df.to_csv(r'./result/psi.csv')
+    psi_df.to_csv(os.path.join(base_dir, r'result\psi.csv'))
 ```
 ##### 6 特征初筛与细筛
 ```python
@@ -156,7 +156,8 @@ with timer("cal cv score"):
                          base_features=numeric_feats+category_feats)
     fs.identify_all(config=config)
     fs.plot_feature_importance()
-    fs.result_save(output=r"./result/feats_seletor_result.xlsx")
+    fs.result_save(output=os.path.join(base_dir, r".\result\feats_seletor_result.xlsx"))
+
 ```
 ##### 7 PMML建模与评估
 ```python
@@ -178,6 +179,7 @@ with timer("PMML model build"):
     pmml_model.persist(base_dir="result",
                        model_name="credit")
 ```
+
 
 Let's started! Welcome to star!
 
