@@ -18,7 +18,7 @@ Different modules of the Package are provided for everyone to use.
 ### Install 
 GitLab安装
 ```bash
-pip install --upgrade http://datacode.dztech.com/weiguang/wgcpy.git
+pip install --upgrade https://github.com/whyjust/wgcpy
 ```
 
 ### Structure
