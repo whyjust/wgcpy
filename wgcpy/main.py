@@ -7,18 +7,20 @@
 @Date:          2021/6/29
 """
 from sklearn.model_selection import train_test_split
-from wgcpy.config import CONFIG
-from wgcpy.preprocessing.eda import *
-from wgcpy.preprocessing.data_dectection import DectectDF
-from wgcpy.featureSelector.selector import *
-from wgcpy.featureSelector.cal_iv_psi import *
-from wgcpy.model.gen_pmml_model import *
-from wgcpy.utils.ext_fn import *
+from config import CONFIG
+from preprocessing.eda import *
+from preprocessing.data_detection import DetectDF
+from featureSelector.selector import *
+from featureSelector.cal_iv_psi import *
+from model.gen_pmml_model import *
+from utils.ext_fn import *
+from preprocessing.baggingPU import BaggingClassifierPU
+from lightgbm import LGBMClassifier
 
 pd.options.display.max_columns = 20
 pd.options.display.max_rows = 20
 
-def run(credit_data, numeric_feats, category_feats):
+def run(credit_data, numeric_feats, category_feats, use_pb=True):
     # 数据EDA
     plot_feature_boxplot(credit_data, numeric_feats)
     plot_feature_distribution(credit_data, numeric_feats,
@@ -29,9 +31,22 @@ def run(credit_data, numeric_feats, category_feats):
 
     # 数据分布
     with timer('detect dataframe'):
-        dec = DectectDF(credit_data)
+        dec = DetectDF(credit_data)
         df_des = dec.detect(special_value_dict={-999:np.nan},
                             output=os.path.join(base_dir, "result"))
+    # Pubagging:
+    if use_pb:
+        with timer('pu bagging'):
+            estimator = LGBMClassifier(n_estimators=200, max_depth=2, learning_rate=0.1)
+            bc = BaggingClassifierPU(base_estimator=estimator, 
+                                    n_estimators = 30, 
+                                    n_jobs = -1, 
+                                    max_samples = len(credit_data[credit_data['flag']==1]))
+            bc.fit(credit_data[numeric_feats], credit_data['flag'])
+            score_arr = bc.oob_decision_function_[:,1]
+            credit_data['score_pb'] = score_arr
+            credit_data = credit_data[(credit_data['score_pb'].isna()) | (credit_data['score_pb']<0.9)]
+            print('PUbagging-shape:', credit_data.shape)
 
     # 计算IV
     with timer("cal iv"):

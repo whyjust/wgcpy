@@ -6,8 +6,8 @@
 @Author:        weiguang
 @Date:          2021/6/28
 """
-import joblib
-from wgcpy.utils.ext_fn import *
+import joblib, pickle
+from utils.ext_fn import *
 from .dz_eval import *
 from lightgbm import LGBMClassifier
 from xgboost import XGBClassifier
@@ -15,12 +15,11 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import VotingClassifier
 from sklearn2pmml import sklearn2pmml
 from sklearn.impute import SimpleImputer
-from sklearn_pandas import DataFrameMapper,CategoricalImputer
-from sklearn2pmml.decoration import ContinuousDomain,CategoricalDomain
 from sklearn2pmml.pipeline import PMMLPipeline
-from sklearn_pandas import gen_features
-from sklearn.pipeline import FeatureUnion
-from sklearn.preprocessing import StandardScaler,LabelBinarizer
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler,OneHotEncoder
+from sklearn.compose import ColumnTransformer
+
 
 logger = init_logger()
 
@@ -76,23 +75,26 @@ class genPMMLModel:
             self.param_dict = param_dict
 
         model = self._gen_model(model_type=model_type, param_dict=self.param_dict)
-        feature_def = gen_features(
-            columns=self.category_feature,
-            classes=[CategoricalDomain, CategoricalImputer, LabelBinarizer]
-            )
-        mapper_numerical = DataFrameMapper([
-                (self.numeric_feature,[ContinuousDomain(with_data=False),
-                                       SimpleImputer(missing_values=np.nan, fill_value=-999, strategy="constant"),
-                                       StandardScaler()])
-        ])
-        mapper_category = DataFrameMapper(feature_def)
+        numeric_transformer = Pipeline(steps=[
+            ('imputer', SimpleImputer(strategy='median')),
+            ('scaler', StandardScaler())]
+        )
 
-        if len(self.category_feature) == 0:
-            mapper = mapper_numerical
-        else:
-            mapper = FeatureUnion([('mapper_numerical',mapper_numerical), ('mapper_category',mapper_category)])
+        categorical_transformer = Pipeline(steps=[
+            ('imputer', SimpleImputer(strategy='constant', fill_value='missing')),
+            ('onehot', OneHotEncoder(handle_unknown='ignore'))]
+        )
+
+        preprocessor = ColumnTransformer(
+        transformers=[
+            ('num', numeric_transformer, numeric_feature),
+            ('cat', categorical_transformer, category_feature)])
+        
+        for col in category_feature:
+            self.train_data[col] = self.train_data[col].astype('category')
+
         self.pipeline_model = PMMLPipeline([
-            ('mapper', mapper),
+            ('mapper', preprocessor),
             ('classifier', model)
         ])
         logger.info(f'numeric features cnt: {len(self.numeric_feature)}, \t'
@@ -126,6 +128,7 @@ class genPMMLModel:
         :param model_name: str, model name
         :return:
         '''
-        joblib.dump(self.pipeline_model, os.path.join(base_dir, f"{model_name}.pkl"), compress=3)
+        with open(os.path.join(base_dir, f"{model_name}.pkl"), 'wb') as file:
+            pickle.dump(self.pipeline_model, file)
         sklearn2pmml(self.pipeline_model, os.path.join(base_dir, f"{model_name}.pmml"), with_repr=True)
 

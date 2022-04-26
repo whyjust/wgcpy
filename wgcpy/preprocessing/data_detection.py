@@ -6,12 +6,12 @@ Author :        weiguang
 date：          2021/6/18
 Description :
 """
-from wgcpy.utils.ext_fn import *
+from utils.ext_fn import *
 import os
 
 logger = init_logger()
 
-class DectectDF:
+class DetectDF:
     def __init__(self, df):
         if not isinstance(df, pd.DataFrame):
             Exception("the type of df must be DataFrame!")

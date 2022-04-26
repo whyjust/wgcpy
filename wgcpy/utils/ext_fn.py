@@ -47,7 +47,6 @@ def init_logger(level=LEVEL['info']):
         logger.addHandler(ch_lg)
     return logger
 
-
 logger = init_logger()
 logger.info(f"wgcpy log save path: {LOGFILE}! ")
 
@@ -203,10 +202,9 @@ class CheckDataType(object):
             raise TypeError(
                 '"target" must be "numpy.ndarray" or "Pandas.Series" or "list", got {} instead.'.format(type(self.target_data)))
         try:
-            assert len(self.target_data.shape) == 1, 'target must be 1-D. It is {}-D instead.'.format(len(self.target_data.shape))
+            assert len(self.target_data.shape)==1, 'target must be 1-D. It is {}-D instead.'.format(len(self.target_data.shape))
         except AttributeError:
-            logger.info('Cannot determine shape of the {}. '
-                        'Type must be "numpy.ndarray" or "Pandas.Series" or "list", got {} instead'.format(name,type(self.target_data)))
+            logger.info('Type must be "numpy.ndarray" or "Pandas.Series" or "list", got {} instead'.format(type(self.target_data)))
 
     @property
     def format_target(self):
@@ -226,4 +224,5 @@ class CheckDataType(object):
             return self.train_data
         else:
             raise TypeError("train data must be DataFrame or Series!")
+
 

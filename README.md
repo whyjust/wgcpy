@@ -15,14 +15,10 @@ Different modules of the Package are provided for everyone to use.
 - python 3.5 or newer
 - Java 1.8 or newer. The java executable must be available on system path.
 
-### Install
-PyPI安装
+### Install 
+GitLab安装
 ```bash
-pip install wgcpy
-``` 
-GitHub安装
-```bash
-pip install --upgrade git+https://github.com/whyjust/wgcpy
+pip install --upgrade http://datacode.dztech.com/weiguang/wgcpy.git
 ```
 
 ### Structure
@@ -61,17 +57,10 @@ WGCPY
     │      gen_pmml_model.py
     │      __init__.py
     │
-    ├─pic						结果图片
-    │      credit.amount_woe.png
-    │      plot_category_countplot.png
-    │      plot_corr.png
-    │      plot_feature_boxplot.png
-    │      plot_feature_distribution.png
-    │      python-wgcpy-green.svg
-    │
     ├─preprocessing					数据探查模块
     │      data_dectection.py
     │      eda.py
+    |      baggingPU.py
     │      __init__.py
     │
     └─utils						Utils函数
@@ -96,10 +85,26 @@ plot_corr(credit_data, numeric_feats+['flag'], mask=True)
 ```python
 # 数据分布
 with timer('detect dataframe'):
-    dec = DectectDF(credit_data)
+    dec = DetectDF(credit_data)
     df_des = dec.detect(special_value_dict={-999:np.nan},
                         output=os.path.join(base_dir, "result"))
 ```
+
+##### Pubagging
+```
+with timer('pu bagging'):
+    estimator = LGBMClassifier(n_estimators=200, max_depth=2, learning_rate=0.1)
+    bc = BaggingClassifierPU(base_estimator=estimator, 
+                            n_estimators = 30, 
+                            n_jobs = -1, 
+                            max_samples = len(credit_data[credit_data['flag']==1]))
+    bc.fit(credit_data[numeric_feats], credit_data['flag'])
+    score_arr = bc.oob_decision_function_[:,1]
+    credit_data['score_pb'] = score_arr
+    credit_data = credit_data[(credit_data['score_pb'].isna()) | (credit_data['score_pb']<0.9)]
+    print('PUbagging-shape:', credit_data.shape)
+```
+
 ##### 4 计算IV
 ```python
 with timer("cal iv"):
@@ -179,7 +184,6 @@ with timer("PMML model build"):
     pmml_model.persist(base_dir="result",
                        model_name="credit")
 ```
-
 
 Let's started! Welcome to star!
 
