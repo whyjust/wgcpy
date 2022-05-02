@@ -7,7 +7,7 @@ date：          2021/6/21
 Description :
 """
 import warnings
-from utils.ext_fn import *
+from wgcpy.utils.ext_fn import *
 
 def split_data(df, col, num_split, special_attributes=None):
     """

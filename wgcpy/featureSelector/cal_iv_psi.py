@@ -7,8 +7,8 @@
 @Date:          2021/6/22
 """
 from tqdm import tqdm
-from utils.ext_fn import *
-from bins.cut_bins import *
+from wgcpy.utils.ext_fn import *
+from wgcpy.bins.cut_bins import *
 
 logger = init_logger()
 

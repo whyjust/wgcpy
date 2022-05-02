@@ -7,7 +7,7 @@ date：          2021/6/21
 Description :
 """
 from sklearn.tree import DecisionTreeClassifier
-from .chi_merge import *
+from wgcpy.bins.chi_merge import *
 import warnings
 warnings.filterwarnings("ignore")
 

@@ -6,7 +6,7 @@ Author :        weiguang
 date：          2021/6/18
 Description :
 """
-from utils.ext_fn import *
+from wgcpy.utils.ext_fn import *
 import os
 
 logger = init_logger()

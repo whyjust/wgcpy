@@ -7,8 +7,8 @@
 @Date:          2021/6/28
 """
 import joblib, pickle
-from utils.ext_fn import *
-from .dz_eval import *
+from wgcpy.utils.ext_fn import *
+from wgcpy.model.dz_eval import *
 from lightgbm import LGBMClassifier
 from xgboost import XGBClassifier
 from sklearn.linear_model import LogisticRegression

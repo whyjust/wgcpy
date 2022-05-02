@@ -11,7 +11,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-from utils.ext_fn import *
+from wgcpy.utils.ext_fn import *
 from scipy.stats import ks_2samp
 import lightgbm as lgb
 from sklearn.metrics import roc_auc_score

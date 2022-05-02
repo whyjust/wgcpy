@@ -7,10 +7,10 @@
 @Date:          2021/6/23
 """
 from pandas import ExcelWriter
-from utils.ext_fn import *
-from config import CONFIG
+from wgcpy.utils.ext_fn import *
+from wgcpy.config import CONFIG
 import matplotlib.pyplot as plt
-from model.gen_model import GenCVModel, IncreaseCVSelector
+from wgcpy.model.gen_model import GenCVModel, IncreaseCVSelector
 
 logger = init_logger()
 

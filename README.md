@@ -25,45 +25,50 @@ pip install --upgrade https://github.com/whyjust/wgcpy
 wgcpy package tree structure:
 ```text
 WGCPY
+D:\GITHUB\WGCPY
 │  .gitignore
+│  info.log
 │  LICENSE
+│  main.py
 │  MANIFEST.in
-│  README.md						描述与Demo
-│  requirements.txt					安装环境
-│  setup.py						
+│  README.md
+│  requirements.txt
+│  setup.py
+│
+├─data
+│
+├─pic
+│
+├─result
 │
 └─wgcpy
-    │  config.py					配置项
-    │  main.py						运行主文件
-    │  info.log						日志信息
+    │  config.py
     │  __init__.py
     │
-    ├─bins						分箱模块
+    ├─bins
     │      chi_merge.py
     │      cut_bins.py
     │      __init__.py
     │
-    ├─data						Demo数据
-    │      germancredit.csv
-    │
-    ├─featureSelector			                特征筛选模块
+    ├─featureSelector
     │      cal_iv_psi.py
+    │      cal_iv_psi_special.py
     │      selector.py
     │      __init__.py
     │
-    ├─model						PMML模型生成及评估模块
+    ├─model
     │      dz_eval.py
     │      gen_model.py
     │      gen_pmml_model.py
     │      __init__.py
     │
-    ├─preprocessing					数据探查模块
-    │      data_dectection.py
+    ├─preprocessing
+    │      baggingPU.py
+    │      data_detection.py
     │      eda.py
-    |      baggingPU.py
     │      __init__.py
     │
-    └─utils						Utils函数
+    └─utils
             ext_fn.py
             __init__.py
 ```
