@@ -55,7 +55,7 @@ def run(credit_data, numeric_feats, category_feats, use_pb=True):
                                       category_feats=category_feats,
                                       target='flag',
                                       max_interval=10,
-                                      method='tree')
+                                      method='chi')
         fig = plot_bin_woe(binx=iv_details[iv_details['variable'] == 'credit.amount'],
                            title=None,
                            display_iv=True)
@@ -130,6 +130,7 @@ if __name__ == "__main__":
     numeric_feats = credit_data.select_dtypes(include=['int64','float64']).columns.tolist()
     category_feats = list(set(credit_data.columns) - set(numeric_feats + ['creditability']))
     credit_data["flag"] = credit_data["creditability"].replace({"good": 0, "bad": 1})
+    print(len(numeric_feats), len(category_feats), len(credit_data))
 
     # 运行
     run(credit_data=credit_data,

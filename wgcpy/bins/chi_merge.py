@@ -297,13 +297,13 @@ def cal_chi_merge(df, col, target, max_interval, min_bin_pct=0.01, special_attri
                         cutOffPoints.remove(cutOffPoints[currentIndex])
                 df2['temp_bin'] = df2['temp'].apply(lambda x: assign_bin(x, cutOffPoints, special_attributes))
                 valueCounts = df2['temp_bin'].value_counts().to_frame()
-                valueCounts['pcnt'] = valueCounts['temp'].apply(lambda x: x * 1.0 / N)
+                valueCounts['pcnt'] = valueCounts['temp_bin'].apply(lambda x: x * 1.0 / N)
                 valueCounts = valueCounts.sort_index()
                 minPcnt = min(valueCounts['pcnt'])
 
-            if cutOffPoints is np.nan:
-                return np.nan
-            return cutOffPoints
+        if cutOffPoints is np.nan:
+            return np.nan
+        return cutOffPoints
 
 
 '''
@@ -465,7 +465,7 @@ def monotone_merge(df, target, col):
         bins_list = all_possible_merging[best_merging_position]['bins_list']
         bad_by_bin = all_possible_merging[best_merging_position]['bad_by_bin']
         not_monotone_count = all_possible_merging[best_merging_position]['not_monotone_count']
-        not_monotone_position = FeatureMonotone(bad_by_bin[:, 3])['index_of_nonmonotone']
+        not_monotone_position = feature_monotone(bad_by_bin[:, 3])['index_of_nonmonotone']
     return bins_list
 
 

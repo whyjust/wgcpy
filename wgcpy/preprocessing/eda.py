@@ -25,7 +25,7 @@ def plot_feature_boxplot(df, feats, figsize=(40,12), sub_col=2):
     plt.subplots(figsize=figsize)
 
     for i,feat in enumerate(feats):
-        ax1 = plt.subplot(sub_col, np.ceil(len(feats)/sub_col), i+1)
+        ax1 = plt.subplot(sub_col, int(np.ceil(len(feats)/sub_col)), i+1)
         plt.xlim(df[feat].min(), df[feat].max()*1.1)
         sns.boxplot(x=df[feat], ax=ax1)
     plt.show()
@@ -49,7 +49,7 @@ def plot_feature_distribution(df, feats, label='flag', sub_col=5, figsize=(35,20
     plt.figure(figsize=figsize)
 
     for i,feat in enumerate(feats):
-        ax1 = plt.subplot(sub_col, np.ceil(len(feats)/sub_col), i+1)
+        ax1 = plt.subplot(sub_col, int(np.ceil(len(feats)/sub_col)), i+1)
         sns.kdeplot(d1[feat], label=f'{label_v[1]}', bw=1.5, ax=ax1)
         sns.kdeplot(d0[feat], label=f'{label_v[0]}', bw=1.5, ax=ax1)
         plt.xlabel(feat, fontsize=12)
@@ -76,7 +76,7 @@ def plot_category_countplot(df, feats, label="flag", sub_col=2, figsize=(12,8)):
     plt.subplots(figsize=figsize)
 
     for i,feat in enumerate(feats):
-        plt.subplot(sub_col, np.ceil(len(feats)/sub_col), i+1)
+        plt.subplot(sub_col, int(np.ceil(len(feats)/sub_col)), i+1)
         sns.countplot(x=feat, hue=label, data=df, palette='Set3')
     plt.show()
 
