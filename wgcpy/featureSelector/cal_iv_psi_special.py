@@ -28,9 +28,11 @@ def equal_fre_cut(series, abnormal_value, bins):
             split_series = np.array_split(series, bins)
 
         for split in split_series:
-            bin_threshold.append(max(split))
-
-        bin_threshold = [-np.inf] + bin_threshold
+            if len(split) == 0:
+                continue
+            else:
+                bin_threshold.append(max(split))
+            bin_threshold = [-np.inf] + bin_threshold
     else:
         split_series = None
         bin_threshold = None
