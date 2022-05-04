@@ -181,7 +181,7 @@ def calculate_psi(initial, new, var, abnormal_value_list, bin_size):
     initial_per = np.array(initial_per) / total_initial
     new_per = np.array(new_per) / total_new
     psi_value = np.sum([sub_psi(initial_per[i], new_per[i]) for i in range(len(initial_per))])
-    df_bin_info = pd.DataFrame(bin_info, columns=['index', 'VarName', 'bin', 'expected_cnt', 'expected_pct', 'actucal_cnt', 'actical_pct'])
+    df_bin_info = pd.DataFrame(bin_info, columns=['index', 'VarName', 'bin', 'expected_cnt', 'expected_pct', 'actucal_cnt', 'actucal_pct'])
     return psi_value, df_bin_info
 
 
