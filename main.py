@@ -108,14 +108,20 @@ def run(credit_data, numeric_feats, category_feats, use_pb=True):
         trn_x, tes_x, y_trn, y_tes = train_test_split(credit_data,
                                                       credit_data['flag'],
                                                       test_size=0.2)
+        base_feature = numeric_feats+category_feats
+        cat_indices = [index for index,v in enumerate(base_feature) if v in category_feats]
+        fit_params = {"classifier__categorical_feature" : cat_indices}
+        print('cat_indices:', cat_indices)
+
         pmml_model = genPMMLModel(data=trn_x,
                                   target="flag",
-                                  base_features=numeric_feats+category_feats)
+                                  base_features=base_feature)
 
         pmml_model.make_pipeline_model(numeric_feature=numeric_feats,
                                        category_feature=category_feats,
                                        model_type='lgb',
-                                       param_dict=config['params'])
+                                       param_dict=config['params'],
+                                       fit_params=fit_params)
 
         predict = pmml_model.evaluate(data=tes_x,
                                       target="flag")

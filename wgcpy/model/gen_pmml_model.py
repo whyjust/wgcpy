@@ -17,7 +17,7 @@ from sklearn2pmml import sklearn2pmml
 from sklearn.impute import SimpleImputer
 from sklearn2pmml.pipeline import PMMLPipeline
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler,OneHotEncoder
+from sklearn.preprocessing import StandardScaler,OneHotEncoder,LabelEncoder
 from sklearn.compose import ColumnTransformer
 
 
@@ -56,7 +56,7 @@ class genPMMLModel:
         return model
 
 
-    def make_pipeline_model(self, numeric_feature, category_feature, model_type, param_dict):
+    def make_pipeline_model(self, numeric_feature, category_feature, model_type, param_dict, fit_params={}):
         '''
         PMML模型构建
         :param numeric_feature: list or ndarray, the numeric feature of train data
@@ -75,24 +75,25 @@ class genPMMLModel:
             self.param_dict = param_dict
 
         model = self._gen_model(model_type=model_type, param_dict=self.param_dict)
+        if len(category_feature) > 0:
+            self.train_data[category_feature] = self.train_data[category_feature].astype('category')
+
         numeric_transformer = Pipeline(steps=[
             ('imputer', SimpleImputer(strategy='median')),
-            ('scaler', StandardScaler())]
-        )
+            ('scaler', StandardScaler())
+        ])
 
         categorical_transformer = Pipeline(steps=[
             ('imputer', SimpleImputer(strategy='constant', fill_value='missing')),
-            ('onehot', OneHotEncoder(handle_unknown='ignore'))]
-        )
+            ('onehot', OneHotEncoder(sparse=False, handle_unknown='ignore'))
+        ])
 
         preprocessor = ColumnTransformer(
-        transformers=[
-            ('num', numeric_transformer, numeric_feature),
-            ('cat', categorical_transformer, category_feature)])
+            transformers=[
+                ('num', numeric_transformer, numeric_feature),
+                ('cat', categorical_transformer, category_feature)
+        ])
         
-        for col in category_feature:
-            self.train_data[col] = self.train_data[col].astype('category')
-
         self.pipeline_model = PMMLPipeline([
             ('mapper', preprocessor),
             ('classifier', model)
@@ -101,7 +102,7 @@ class genPMMLModel:
                     f'category features cnt: {len(self.category_feature)}')
         logger.info(f'train data shape: {self.train_data.shape}, \t'          
                     f'target data shape: {self.target_data.shape}')
-        self.pipeline_model.fit(self.train_data, self.target_data)
+        self.pipeline_model.fit(self.train_data, self.target_data, **fit_params)
         self.pipeline_model.verify(self.train_data.sample(n=10))
 
 
