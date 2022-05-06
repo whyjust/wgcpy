@@ -104,6 +104,8 @@ def calculate_iv_woe(df, var, bin_size, abnormal_value_list, label):
     df_bin_info = pd.DataFrame(bin_info, columns=['index', 'VarName', 'bin', 'bin_cnt', 'bin_pct', 'bad_rate', 'good_pct', 'bad_pct'])
     df_bin_info['woe'] = df_bin_info.apply(lambda x: np.log(x.good_pct * 1.0 / (x.bad_pct + 1e-5)), axis=1)
     df_bin_info['iv'] = df_bin_info.apply(lambda x:  (x.good_pct - x.bad_pct) * np.log(x.good_pct * 1.0 / (x.bad_pct + 1e-5)), axis=1)
+    df_bin_info['woe'] = df_bin_info['woe'].replace({np.inf: 0, -np.inf: 0})
+    df_bin_info['iv'] = df_bin_info['iv'].replace({np.inf: 0, -np.inf: 0})
     iv_sum = sum(df_bin_info['iv'])
     return df_bin_info, iv_sum, df_bin_info['woe'].values
 
