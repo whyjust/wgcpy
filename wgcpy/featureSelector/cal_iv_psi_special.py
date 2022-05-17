@@ -32,7 +32,7 @@ def equal_fre_cut(series, abnormal_value, bins):
                 continue
             else:
                 bin_threshold.append(max(split))
-            bin_threshold = [-np.inf] + bin_threshold
+        bin_threshold = [-np.inf] + bin_threshold
     else:
         split_series = None
         bin_threshold = None
