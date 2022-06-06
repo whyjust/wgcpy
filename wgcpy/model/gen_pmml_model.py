@@ -84,7 +84,7 @@ class genPMMLModel:
         ])
 
         categorical_transformer = Pipeline(steps=[
-            ('imputer', SimpleImputer(strategy='constant', fill_value='missing')),
+            ('imputer', SimpleImputer(strategy='constant', fill_value='missing'))
             ('onehot', OneHotEncoder(sparse=False, handle_unknown='ignore'))
         ])
 
