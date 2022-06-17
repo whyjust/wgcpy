@@ -75,25 +75,22 @@ class genPMMLModel:
             self.param_dict = param_dict
 
         model = self._gen_model(model_type=model_type, param_dict=self.param_dict)
+        numeric_transformer = Pipeline(steps=[
+            ('imputer', SimpleImputer(strategy='constant', fill_value=-99)),
+            ('scaler', StandardScaler())
+        ])
+        transformers=[('num', numeric_transformer, numeric_feature)]
+        
         if len(category_feature) > 0:
             self.train_data[category_feature] = self.train_data[category_feature].astype('category')
 
-        numeric_transformer = Pipeline(steps=[
-            ('imputer', SimpleImputer(strategy='median')),
-            ('scaler', StandardScaler())
-        ])
-
-        categorical_transformer = Pipeline(steps=[
-            ('imputer', SimpleImputer(strategy='constant', fill_value='missing')),
-            ('onehot', OneHotEncoder(sparse=False, handle_unknown='ignore'))
-        ])
-
-        preprocessor = ColumnTransformer(
-            transformers=[
-                ('num', numeric_transformer, numeric_feature),
-                ('cat', categorical_transformer, category_feature)
-        ])
-        
+            categorical_transformer = Pipeline(steps=[
+                ('imputer', SimpleImputer(strategy='constant', fill_value='missing')),
+                ('onehot', OneHotEncoder(sparse=False, handle_unknown='ignore'))
+            ])
+            transformers.append(('cat', categorical_transformer, category_feature))
+                
+        preprocessor = ColumnTransformer(transformers)
         self.pipeline_model = PMMLPipeline([
             ('mapper', preprocessor),
             ('classifier', model)
