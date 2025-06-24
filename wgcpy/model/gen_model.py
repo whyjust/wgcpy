@@ -124,7 +124,7 @@ class GenCVModel(CheckDataType):
                           early_stopping_rounds=100, verbose=100)
             else:
                 model.fit(tr_x, tr_y, eval_metric='auc', categorical_feature=categorical_feature,
-                          eval_set=[(val_x, val_y), (tr_x, tr_y)],eval_names=['valid', 'train'],
+                          eval_set=[(val_x, val_y), (tr_x, tr_y)], eval_names=['valid', 'train'],
                           early_stopping_rounds=100, verbose=100)
 
             best_iteration = model.best_iteration_

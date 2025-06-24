@@ -112,7 +112,7 @@ def numeric_var_woe_transform(data, var, bins_df, bins):
     df = data[[var]].copy()
     transform_dict = dict(zip(bins_df.index.tolist(), bins_df['woe'].values.tolsit()))
     df['bins'] = pd.cut(x=df[var], bins=bins)
-    df['woe'] = df['bins'].relplace(transform_dict)
+    df['woe'] = df['bins'].replace(transform_dict)
     return df['woe'].values
 
 

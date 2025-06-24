@@ -45,14 +45,12 @@ class genPMMLModel:
 
         if model_type == 'lgb':
             model = LGBMClassifier().set_params(**self.param_dict.get('lightgbm', {}))
-        elif model_type == 'voting':
-            lgb_model = LGBMClassifier().set_params(**self.param_dict.get('lightgbm', {}))
-            xgb_model = XGBClassifier().set_params(**self.param_dict.get('xgboost', {}))
-            lr_model = LogisticRegression().set_params(**self.param_dict.get('lr', {}))
-            model = VotingClassifier(estimators=[('lightgbm', lgb_model), ('xgboost', xgb_model), ('lr', lr_model)],
-                                     voting='soft', weights=np.ones(3), n_jobs=3)
+        elif model_type == 'xgb':
+            model = XGBClassifier().set_params(**self.param_dict.get('xgboost', {}))
+        elif model_type == 'lr':
+            model = LogisticRegression().set_params(**self.param_dict.get('lr', {}))
         else:
-            raise ValueError('the type must be lgb or voting! ')
+            raise ValueError('the type must be lgb or xgb or lr! ')
         return model
 
 
@@ -83,7 +81,6 @@ class genPMMLModel:
         
         if len(category_feature) > 0:
             self.train_data[category_feature] = self.train_data[category_feature].astype('category')
-
             categorical_transformer = Pipeline(steps=[
                 ('imputer', SimpleImputer(strategy='constant', fill_value='missing')),
                 ('onehot', OneHotEncoder(sparse=False, handle_unknown='ignore'))
